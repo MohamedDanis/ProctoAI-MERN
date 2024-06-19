@@ -68,7 +68,7 @@ const Register = () => {
         const res = await register({ name, email, password, role }).unwrap();
         dispatch(setCredentials({ ...res }));
         formik.resetForm();
-
+        
         navigate('/auth/login');
       } catch (err) {
         toast.error(err?.data?.message || err.error);

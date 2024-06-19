@@ -2,7 +2,7 @@ import { apiSlice } from './apiSlice';
 
 // Define the base URL for the exams API
 const EXAMS_URL = '/api/users';
-
+const YOUR_BEARER_TOKEN=localStorage.getItem('token')
 // Inject endpoints for the exam slice
 export const examApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -19,6 +19,10 @@ export const examApiSlice = apiSlice.injectEndpoints({
         url: `${EXAMS_URL}/exam`,
         method: 'POST',
         body: data,
+          headers: new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${YOUR_BEARER_TOKEN}`,
+          }),
       }),
     }),
     // Get questions for a specific exam
